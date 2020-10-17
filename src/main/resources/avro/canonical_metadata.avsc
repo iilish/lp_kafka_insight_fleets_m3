@@ -1,0 +1,35 @@
+{
+  "namespace": "manning.devices.canonical.m2",
+  "type": "record",
+  "name": "CanonicalMetadata",
+  "fields": [
+    {
+      "name": "uuid",
+      "type": "string"
+    },
+    {
+     "name": "arrival_time_ms",
+     "type": ["long"]
+    },
+    {
+      "name": "start_time_ms",
+       "type": ["long"]
+    },
+    {
+      "name": "end_time_ms",
+       "type": ["long"]
+    },
+    {
+        "name": "withError",
+        "type": ["null", "boolean"]
+    },
+    {
+        "name": "slow",
+        "type": ["null", "boolean"]
+    },
+    {
+      "name": "number_events",
+      "type": [ "null", "int"]
+    }
+  ]
+}

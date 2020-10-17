@@ -1,0 +1,35 @@
+--- #Battery Energy REST configuration file
+#  docker exec -it <<container name>> bash
+#
+#  docker run --name manning-postgres -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:12.2
+# Kafka brokers configuration
+# kafka-topics --list --bootstrap-server localhost:29092
+# kafka-topics --delete --bootstrap-server localhost:29092 --topic source-topic
+# kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 3 --topic source-topic
+# kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 3 --topic energyTransformedTopic
+# kafka-console-consumer --bootstrap-server localhost:29092 \
+#    --topic source-topic \
+#    --from-beginning \
+#    --formatter kafka.tools.DefaultMessageFormatter \
+#    --property print.key=true \
+#    --property print.value=true \
+#    --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+#    --property value.deserializer=io.confluent.kafka.serializers.KafkaAvroDeserializerConfig
+#
+#  kafka-console-consumer --bootstrap-server localhost:29092 --topic energyTransformedTopic --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property print.value=true
+kafka:
+  bootstrap.servers: "localhost:29092"
+  schema.registry.url: "http://localhost:8090"
+
+s3:
+  bucket: "manning-kafka-bucket"
+  endpoint: "not_used"
+
+topic: "source-topic"
+deviceTable: "devices"
+
+database:
+  driverClass: org.postgresql.Driver
+  user: postgres
+  password: secret
+  url: "jdbc:postgresql://0.0.0.0:5432/postgres"

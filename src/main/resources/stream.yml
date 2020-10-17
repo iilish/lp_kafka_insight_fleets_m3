@@ -1,0 +1,24 @@
+
+applicationId: "device-to-canonical-application"
+kafka:
+  bootstrap-servers: "localhost:29092"
+  schema-registry-url: "http://localhost:8090"
+#  overrides:
+#    "auto.offset.reset": "latest"
+
+s3:
+  bucket: "manning-kafka-bucket"
+  endpoint: "toto"
+
+source: "source-topic"
+slowLane: "slow-topic"
+dlq: "dead-topic"
+metadata: "metadata-topic"
+sink: "canonical-topic"
+# deviceTable: "devices"
+
+#database:
+#  driverClass: org.postgresql.Driver
+#  user: postgres
+#  password: secret
+#  url: "jdbc:postgresql://0.0.0.0:5432/postgres"
